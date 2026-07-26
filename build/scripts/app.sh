@@ -29,8 +29,13 @@ fi
 
 
 #Do the thing
-${STEAMCMD_BIN} +force_install_dir ${INSTALL_DIR} \
-		+login ${LOGIN} \
-		+app_update ${APP_ID} validate \
-		+quit
+for i in {1..3}; do \
+	${STEAMCMD_BIN} \
+			+force_install_dir ${INSTALL_DIR} \
+			+login ${LOGIN} \
+			+app_update ${APP_ID} validate \
+			+@sSteamCmdForcePlatformType linux \
+			+quit && break ||  \
+  (echo "Retry $i failed, waiting..." && sleep 5); \
+done
 

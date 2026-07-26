@@ -15,6 +15,6 @@ RUN apt-get -qqy update && \
     dpkg --add-architecture i386
 
 RUN apt-get -qqy update && \
-    apt-get -qqy install lib32gcc-s1 steamcmd
+    apt-get -qqy install lib32gcc-s1 steamcmd lib32z1
 
 RUN mkdir -vp /root/bin/ && ln -s /usr/games/steamcmd /root/bin/steamcmd
